@@ -1,5 +1,5 @@
 // stwórz HOCa onlyWithAuthedUser, który korzysta z mockedStore
-import React from 'react';
+import React, { useContext } from 'react';
 import Login from './Login';
 
 const mockedStore = {
@@ -9,10 +9,13 @@ const mockedStore = {
   },
   isAuthed: false,
 };
-
 const onlyWithAuthedUser = (Component, store) => (props) => {
   if (store.isAuthed && store.user.email && store.user.password) {
-    return <Component />;
+    return (
+      <div>
+        <Component />
+      </div>
+    );
   } else if (!store.isAuthed) {
     return <Login />;
   }
