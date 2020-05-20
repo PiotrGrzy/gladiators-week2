@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import store from './context/store';
 import onlyWithAuthedUser from './components/onlyWithAuthedUser/onlyWithAuthedUser';
 
@@ -8,7 +8,9 @@ const TestComponent = () => {
 
 function App() {
   const state = useContext(store);
-  console.log(state);
+  useEffect(() => {
+    console.log(state);
+  });
 
   const AuthorizedComponent = onlyWithAuthedUser(TestComponent, state);
   return (
