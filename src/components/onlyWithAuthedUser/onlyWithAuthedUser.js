@@ -2,15 +2,23 @@
 import React from 'react';
 import Login from './Login';
 
-const mockedStore = {
-  user: {
-    email: '',
-    password: '',
-  },
-  isAuthed: true,
-};
 const onlyWithAuthedUser = (Component, store) => (props) => {
-  return <div>{store.isAuthed ? <Component /> : <Login />}</div>;
+  const checkStoreStructure = () => {
+    if (
+      store.hasOwnProperty('user') &&
+      store.hasOwnProperty('isAuthed') &&
+      store.user.hasOwnProperty('email') &&
+      store.user.hasOwnProperty('password')
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  if (!checkStoreStructure())
+    return <div>Invalid store data format in component: {Component.name}</div>;
+
+  return <div>{store.isAuthed ? <Component {...props} /> : <Login />}</div>;
 };
 export default onlyWithAuthedUser;
 // Przetestuj poniższe test casy:

@@ -1,8 +1,27 @@
 // Stwórz HOCa outsideClickHOC, który bedzie działać np z customowymi
 // componentami typu dropdown lub select:
-import React from 'react';
+import React, { useState } from 'react';
+import 'styles.css';
 
-const outsideClickHOC = (Component) => (props) => {};
+const outsideClickHOC = (Component) => (props) => {
+  const [waitingOnClick, setWaitingOnClick] = useState(false);
+  const [styles, setStyles] = useState({
+    display: 'none',
+  });
+
+  const OpenComponent = () => {
+    setStyles({ display: 'block' });
+  };
+
+  const CloseComponent = () => {};
+
+  return (
+    <div>
+      <div>Backdrop</div>
+      <div>{<Component />}</div>
+    </div>
+  );
+};
 
 // który będzie działać wg poniższych wytycznych:
 // - będzie do owrapowanego komponentu dodawać propsy oraz działanie:
