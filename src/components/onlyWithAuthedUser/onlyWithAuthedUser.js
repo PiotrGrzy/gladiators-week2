@@ -16,7 +16,11 @@ const onlyWithAuthedUser = (Component, store) => (props) => {
   };
 
   if (!checkStoreStructure())
-    return <div>Invalid store data format in component: {Component.name}</div>;
+    return (
+      <div className="warning">
+        Invalid store data format in component: {Component.name}
+      </div>
+    );
 
   return <div>{store.isAuthed ? <Component {...props} /> : <Login />}</div>;
 };
