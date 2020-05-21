@@ -24,3 +24,7 @@ code {
   max-width: 500px;
   margin: 30px auto;
 }
+
+.result {
+  margin-bottom: 150px;
+}

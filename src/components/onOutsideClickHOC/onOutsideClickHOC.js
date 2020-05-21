@@ -1,7 +1,7 @@
 // Stwórz HOCa outsideClickHOC, który bedzie działać np z customowymi
 // componentami typu dropdown lub select:
 import React, { useState } from 'react';
-import 'styles.css';
+import './styles.css';
 
 const outsideClickHOC = (Component) => (props) => {
   const [waitingOnClick, setWaitingOnClick] = useState(false);
@@ -15,12 +15,7 @@ const outsideClickHOC = (Component) => (props) => {
 
   const CloseComponent = () => {};
 
-  return (
-    <div>
-      <div>Backdrop</div>
-      <div>{<Component />}</div>
-    </div>
-  );
+  return <div className="backDrop">{<Component {...props} />}</div>;
 };
 
 // który będzie działać wg poniższych wytycznych:
