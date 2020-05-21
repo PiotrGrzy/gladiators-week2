@@ -4,18 +4,27 @@ import React, { useState } from 'react';
 import './styles.css';
 
 const outsideClickHOC = (Component) => (props) => {
-  const [waitingOnClick, setWaitingOnClick] = useState(false);
-  const [styles, setStyles] = useState({
-    display: 'none',
-  });
+  const [waitingOnClickOutside, setWaitingOnClickOutside] = useState(false);
 
-  const OpenComponent = () => {
-    setStyles({ display: 'block' });
+  const onClickOutside = () => {
+    setWaitingOnClickOutside(false);
   };
 
-  const CloseComponent = () => {};
+  const onStartListeningClickOutside = (e) => {
+    e.stopPropagation();
+    setWaitingOnClickOutside(true);
+  };
 
-  return <div className="backDrop">{<Component {...props} />}</div>;
+  return (
+    <div
+      className={waitingOnClickOutside ? 'backDrop-on' : 'backDrop-off'}
+      onClick={onClickOutside}
+    >
+      <div onClick={onStartListeningClickOutside}>
+        {<Component {...props} />}
+      </div>
+    </div>
+  );
 };
 
 // który będzie działać wg poniższych wytycznych:
