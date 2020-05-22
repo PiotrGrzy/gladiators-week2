@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/gladiators-week2/static/css/main.41e3c151.chunk.css",
+    "main.js": "/gladiators-week2/static/js/main.f6e330cd.chunk.js",
+    "main.js.map": "/gladiators-week2/static/js/main.f6e330cd.chunk.js.map",
+    "runtime-main.js": "/gladiators-week2/static/js/runtime-main.98d42d39.js",
+    "runtime-main.js.map": "/gladiators-week2/static/js/runtime-main.98d42d39.js.map",
+    "static/js/2.68778175.chunk.js": "/gladiators-week2/static/js/2.68778175.chunk.js",
+    "static/js/2.68778175.chunk.js.map": "/gladiators-week2/static/js/2.68778175.chunk.js.map",
+    "index.html": "/gladiators-week2/index.html",
+    "precache-manifest.fc249ee296a10e315892645a5b735a65.js": "/gladiators-week2/precache-manifest.fc249ee296a10e315892645a5b735a65.js",
+    "service-worker.js": "/gladiators-week2/service-worker.js",
+    "static/css/main.41e3c151.chunk.css.map": "/gladiators-week2/static/css/main.41e3c151.chunk.css.map",
+    "static/js/2.68778175.chunk.js.LICENSE.txt": "/gladiators-week2/static/js/2.68778175.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.98d42d39.js",
+    "static/js/2.68778175.chunk.js",
+    "static/css/main.41e3c151.chunk.css",
+    "static/js/main.f6e330cd.chunk.js"
+  ]
+}
