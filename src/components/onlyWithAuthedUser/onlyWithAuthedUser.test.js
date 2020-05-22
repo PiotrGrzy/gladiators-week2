@@ -2,18 +2,7 @@ import React from 'react';
 import onlyWithAuthedUser from './onlyWithAuthedUser';
 import Login from './Login';
 import { shallow } from 'enzyme';
-
-const mockedProps = {
-  id: 1,
-  name: 'Joe',
-};
-const TestComponent = (mockedProps) => {
-  return (
-    <div>
-      <span>{mockedProps.name}</span>
-    </div>
-  );
-};
+import { TestComponent, mockedProps } from '../../mocks';
 
 describe('withAuthedUser HOC', () => {
   describe('when user is Authorized with proper data', () => {

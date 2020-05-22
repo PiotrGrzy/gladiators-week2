@@ -1,29 +1,46 @@
 // Stwórz HOCa outsideClickHOC, który bedzie działać np z customowymi
 // componentami typu dropdown lub select:
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './styles.css';
 
 const outsideClickHOC = (Component) => (props) => {
   const [waitingOnClickOutside, setWaitingOnClickOutside] = useState(false);
+  const ref = useRef(null);
 
-  const onClickOutside = () => {
-    setWaitingOnClickOutside(false);
+  useEffect(() => {
+    document.addEventListener('click', clickListener);
+    return () => {
+      document.removeEventListener('click', clickListener);
+    };
+  }, []);
+
+  const clickListener = (e) => {
+    if (!ref.current.contains(e.target)) {
+      setWaitingOnClickOutside(false);
+    }
   };
 
   const onStartListeningClickOutside = (e) => {
-    e.stopPropagation();
     setWaitingOnClickOutside(true);
   };
 
   return (
-    <div
-      className={waitingOnClickOutside ? 'backDrop-on' : 'backDrop-off'}
-      onClick={onClickOutside}
-    >
-      <div onClick={onStartListeningClickOutside}>
+    <>
+      <div
+        id="backdrop"
+        onClick={clickListener}
+        className={waitingOnClickOutside ? 'backDrop-on' : 'backDrop-off'}
+      ></div>
+      <div
+        className={
+          waitingOnClickOutside ? 'container withBackDrop' : 'container'
+        }
+        ref={ref}
+        onClick={onStartListeningClickOutside}
+      >
         {<Component {...props} />}
       </div>
-    </div>
+    </>
   );
 };
 

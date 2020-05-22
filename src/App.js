@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { store } from './context/store';
-import SelectBox from './components/onOutsideClickHOC/SelectBox';
+import SelectBox from './components/SelectBox/SelectBox';
 import onlyWithAuthedUser from './components/onlyWithAuthedUser/onlyWithAuthedUser';
 import onOutsideClickHOC from './components/onOutsideClickHOC/onOutsideClickHOC';
 
@@ -21,18 +21,19 @@ function App() {
         <div className="options">
           <span>Store options: </span>
           <button onClick={() => dispatch({ type: 'LOGIN_USER' })}>
-            LOGIN USER
+            AUTHORIZED
           </button>
           <button onClick={() => dispatch({ type: 'LOGOUT_USER' })}>
-            LOGOUT USER
+            UNAUTHORIZED
           </button>
           <button onClick={() => dispatch({ type: 'INVALID_STORE' })}>
-            SET INVALID STORE
+            INVALID STORE DATA
           </button>
         </div>
-        <div className="output">
+        <fieldset className="output">
+          <legend>Output</legend>
           <AuthorizedComponent />
-        </div>
+        </fieldset>
       </div>
       <div className="result">
         <h3> Custom Select Component wrapped in onOutsideClick HOC:</h3>

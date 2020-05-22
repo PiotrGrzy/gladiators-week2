@@ -3,17 +3,11 @@ import React from 'react';
 import Login from './Login';
 
 const onlyWithAuthedUser = (Component, store) => (props) => {
-  const checkStoreStructure = () => {
-    if (
-      store.hasOwnProperty('user') &&
-      store.hasOwnProperty('isAuthed') &&
-      store.user.hasOwnProperty('email') &&
-      store.user.hasOwnProperty('password')
-    ) {
-      return true;
-    }
-    return false;
-  };
+  const checkStoreStructure = () =>
+    store.hasOwnProperty('user') &&
+    store.hasOwnProperty('isAuthed') &&
+    store.user.hasOwnProperty('email') &&
+    store.user.hasOwnProperty('password');
 
   if (!checkStoreStructure())
     return (
